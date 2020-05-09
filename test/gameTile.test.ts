@@ -21,10 +21,8 @@ describe('GameTile Component',() => {
         expect(actualdesc).equals(description)
     })
     it(`Tile should have random value with an empty eventSet`,() => {
-        expect(value).greaterThan(0)
-        expect(value).lessThan(100)
+        expect(value).greaterThan(-1)
+        expect(value).lessThan(101)
     expect(eventSet.entries.length).equals(0);
     })
-    it(``,() => {})
-    it(``,() => {})
 })

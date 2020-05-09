@@ -1,6 +1,12 @@
 import {Piece, PieceType, generatePieces} from './Piece'
 import { Player, PlayerInstructions } from './Player'
 import { GameEvent, GameType, GameTile } from './GameTile'
+import { 
+  BankNote,
+  ATM,
+  RealEstateAgent,
+  Building
+   } from "./Bank";
 
 export enum DiceRoll {
   ONE=1,
@@ -15,12 +21,14 @@ export enum DiceRoll {
 export class Gameboard {
   public board: Array<GameTile>;
   public availablePieces: Map<string, Piece>
-  
+  private atm: ATM;
+  private propertyAgent: RealEstateAgent;
   constructor(){
-    console.log( 'gameboard class')
     this.board = new Array();
     this.board.push(new GameTile({name:'VermillionPark', description:"affordable housing"}));
     this.availablePieces = generatePieces();
+    this.propertyAgent = new RealEstateAgent();
+    this.atm = new ATM(10000);
   }
   /**
    * a player will ask for a peice,
@@ -30,10 +38,8 @@ export class Gameboard {
   public dispensePiece = (name: string) : Piece =>{
     if(this.availablePieces.has(name)){
       this.availablePieces.delete(name);
-      console.log('piece found')
       return new Piece(name);
     } else{
-      console.info(`unable to select peice of type ${name}`)  ;
       return this.getRandomPiece()
       
     }
@@ -67,5 +73,9 @@ export class Gameboard {
         new GameEvent('string', GameType.CREDIT, -20), 
       ]
     );
+  }
+  // TODO
+  private GenerateTiles(): Set<GameTile> {
+    return null;
   }
 }
