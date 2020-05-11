@@ -4,15 +4,8 @@ import { expect } from 'chai';
 import { Piece } from '../src/Piece';
 import { PlayerInstructions, Player } from '../src/Player';
 import { GameType } from '../src/gameTile';
+import { Gameboard } from '../src/gameboard';
 
-describe('Awesome app', () => {
-
-  it('should create an instance', () => {
-    const value = new App();
-    expect(value).instanceOf(App);
-  });
-
-});
 
 describe('Piece class', () => {
   let gamepiece='BOOT'
@@ -22,7 +15,14 @@ describe('Piece class', () => {
   })
 });
 
-describe('Player Class', () => {
+describe(`Player Class
+  a player should have a game peice with
+  an initial amount of money in BankNotes.
+  a player can ask the gameboard what its next move is.
+  the player instructions, include an event script
+  the player can iterate through that script and make decisions
+  that affect their wallet.
+`, () => {
   const testPlayer = new Player('Alex');
   const dog = new Piece('DOG');
   testPlayer.setPeice(dog)
@@ -40,9 +40,24 @@ describe('Player Class', () => {
   it('should set the player at position 0 on the board', () => {
     expect(position).equals(0);
   })
+  it('should be able to ask a gameboard for player instructions', () => {
+    const { wallet: originalWalletAmount } = testPlayer;
+    const gb = new Gameboard();
+    const instructions = gb.movePlayer();
+    testPlayer.playTurn(instructions);
+    expect(testPlayer.wallet).lt(originalWalletAmount);
+  });
+  it('should be able to play through player instructions', () => {
+    const { wallet: originalWalletAmount } = testPlayer;
+    const gb = new Gameboard();
+    const instructions = gb.movePlayer();
+    testPlayer.playTurn(instructions);
+    expect(testPlayer.wallet).lt(originalWalletAmount);
+  });
+  it('should be able to make decisions in an event script')
 });
 
-describe('Player turn sequence', () => {
+describe('PlayerInstructions', () => {
   const testPlayer = new Player('Alex');
   const dog = new Piece('DOG');
   testPlayer.setPeice(dog)

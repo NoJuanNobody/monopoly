@@ -25,6 +25,7 @@ export class GameTile {
         this.description = description;
         this.value = Math.ceil(Math.random()*100);
         this.eventSet = new Set();
+        this.eventSet.add(new GameEvent('test game event', GameType.PMT, 500));
     }   
 
 }

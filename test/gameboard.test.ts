@@ -1,11 +1,11 @@
 import { expect } from 'chai'
 import { Gameboard } from '../src/gameboard';
 
-describe(`gameboard component initialization
-a game board has a list of game tiles,
-each of them with a non empty set of game events. 
-a game board manages the circulation of game peices
-no two players can have the same peice
+describe(`Gameboard component initialization
+  a game board has a list of game tiles,
+  each of them with a non empty set of game events. 
+  a game board manages the circulation of game peices
+  no two players can have the same peice
 `,() => {
     const monopoly = new Gameboard();
     const {

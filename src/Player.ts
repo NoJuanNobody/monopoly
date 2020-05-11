@@ -15,7 +15,7 @@ export class Player {
     public setPeice(piece: Piece): void {
         this.piece = piece;
     }
-
+    
     public playTurn({position, eventSet}: PlayerInstructions): void {
         this.position = position;
         const outcome = this.iterateEventSet(eventSet);

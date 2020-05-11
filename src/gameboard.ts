@@ -51,7 +51,7 @@ export class Gameboard {
   }
   
   /**handles and triggers player move event loop */
-  public movePlayer = (player: Player) : PlayerInstructions  => {
+  public movePlayer = () : PlayerInstructions  => {
     //dice roll
     //select event questions and iterate through them
     const newPosition: number = this.diceRoll()
