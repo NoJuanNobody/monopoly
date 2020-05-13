@@ -1,12 +1,6 @@
 import {Piece, PieceType, generatePieces} from './Piece'
-import { Player, PlayerInstructions } from './Player'
+import Player, {PlayerInstructions} from './Player'
 import { GameEvent, GameType, GameTile } from './GameTile'
-import { 
-  BankNote,
-  ATM,
-  RealEstateAgent,
-  Building
-   } from "./Bank";
 
 export enum DiceRoll {
   ONE=1,
@@ -21,14 +15,10 @@ export enum DiceRoll {
 export class Gameboard {
   public board: Array<GameTile>;
   public availablePieces: Map<string, Piece>
-  private atm: ATM;
-  private propertyAgent: RealEstateAgent;
   constructor(){
     this.board = new Array();
     this.board.push(new GameTile({name:'VermillionPark', description:"affordable housing"}));
     this.availablePieces = generatePieces();
-    this.propertyAgent = new RealEstateAgent();
-    this.atm = new ATM(10000);
   }
   /**
    * a player will ask for a peice,
@@ -58,7 +48,7 @@ export class Gameboard {
     const playerTurns: Set<GameEvent> = this.GenerateEventStack();
     return  {
       position: newPosition,
-      eventSet: playerTurns,
+      gameScript: playerTurns,
     } 
   }
   
