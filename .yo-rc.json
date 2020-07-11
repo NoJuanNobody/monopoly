@@ -1,0 +1,15 @@
+{
+  "generator-react-firebase": {
+    "promptValues": {
+      "githubUser": "gohandrogo",
+      "firebaseName": "gohandrogo",
+      "firebaseKey": "TBD",
+      "includeRedux": true,
+      "includeFirestore": false,
+      "otherFeatures": [
+        "Tests for React Components (Jest)"
+      ],
+      "deployTo": "s3"
+    }
+  }
+}
